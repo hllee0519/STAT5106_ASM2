@@ -44,7 +44,7 @@ def prizeCal(points, length):
 			else:
 				print(str(i/2)+" prize: "+str((combination(math.ceil(points), math.ceil(i/2))*combination(length-math.ceil(points), 6-math.ceil(i/2)))-(combination(math.floor(points), math.ceil(i/2))*combination(length-math.ceil(points), 6-math.ceil(i/2)))))
 
-
+# main start
 repeat=True
 while(repeat):
 	entry=list(map(int, input("Numbers of your entry: ").strip('[]').split(',')))
@@ -66,5 +66,4 @@ for i in entry:
 			points+=0.5
 
 prizeCal(points, len(entry))
-#[3, 11, 19, 20, 41, 44, 46]
 
