@@ -31,15 +31,19 @@ def prizeCal(points, length):
 	if points<3:
 		return "no prize"
 	if(points%1==0):
+		n=0
 		for i in range(3, points):
-			print(str(i)+" prize: "+str(combination(points, i)*combination(length-points, 6-i)))
+			print(str(6-n)+" prize: "+str(combination(points, i)*combination(length-points, 6-i)))
+			n+=1
 		print(str(points)+" prize: "+str(combination(length-points, 6-points)))
-	else :
-		
+	else:
+		print(str(points)+" prize: "+str(combination(length-math.ceil(points), 6-math.ceil(points))))
+		for i in range(int((points-0.5)*2), 5, -1):
+			if((i/2)%1==0):
+				print(str(i/2)+" prize: "+str(combination(math.floor(points), i/2)*combination(length-math.ceil(points), 6-i/2)))
+			else:
+				print(str(i/2)+" prize: "+str((combination(math.ceil(points), math.ceil(i/2))*combination(length-math.ceil(points), 6-math.ceil(i/2)))-(combination(math.floor(points), math.ceil(i/2))*combination(length-math.ceil(points), 6-math.ceil(i/2)))))
 
-	# for i in range(3, math.ceil(points)+1):
-	# 	c=combination(length-i, 6-i)
-	# 	print(c)
 
 repeat=True
 while(repeat):
@@ -63,27 +67,4 @@ for i in entry:
 
 prizeCal(points, len(entry))
 #[3, 11, 19, 20, 41, 44, 46]
-
-
-# prize=[20, 320, 640, 9600, 157500, 885990, 21531600]
-# outputMsg="Unit prize of your entry: "
-# match points:
-#     case 6:
-#          outputMsg+="21531600 (1st prize)"
-#     case 5.5:
-#          outputMsg+="885990 (2nd prize)"
-#     case 5:
-#          outputMsg+="157500 (3rd prize)"
-#     case 4.5:
-#         outputMsg+="9600 (4th prize)"
-#     case 4:
-#         outputMsg+="640 (5th prize)"
-#     case 3.5:
-#         outputMsg+="320 (6th prize)"
-#     case 3:
-#         outputMsg+="20 (7th prize)"
-#     case -1:
-#     	outputMsg=""
-
-# print(outputMsg)
 
