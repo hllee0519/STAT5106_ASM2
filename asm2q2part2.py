@@ -47,13 +47,12 @@ def prizeCal(points, length):
 				print(str(13-i)+" prize: "+str((combination(math.ceil(points), math.ceil(i/2))*combination(length-math.ceil(points), 6-math.ceil(i/2)))-(combination(math.floor(points), math.ceil(i/2))*combination(length-math.ceil(points), 6-math.ceil(i/2)))))
 
 # main start
-repeat=True
-while(repeat):
+while(True):
 	entry=list(map(int, input("Numbers of your entry: ").strip('[]').split(',')))
 	if(inputChecking(entry)==False):
 		print("you must input 6 number from 1 to 49 without repetition")
 	else:
-		repeat=False
+		break
 
 draw=draw()
 print("Numbers of draw: "+str(draw))
