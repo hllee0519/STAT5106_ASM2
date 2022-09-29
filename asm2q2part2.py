@@ -31,18 +31,20 @@ def prizeCal(points, length):
 	if points<3:
 		return "no prize"
 	if(points%1==0):
-		n=0
-		for i in range(3, points):
-			print(str(6-n)+" prize: "+str(combination(points, i)*combination(length-points, 6-i)))
-			n+=1
-		print(str(points)+" prize: "+str(combination(length-points, 6-points)))
+		for i in range(points*2, 5, -2):
+			print(str(13-i)+" prize: "+str(combination(points, i/2)*combination(length-points, 6-i/2)))
 	else:
-		print(str(points)+" prize: "+str(combination(length-math.ceil(points), 6-math.ceil(points))))
+		if points<=6:
+			print(str(points)+" prize: "+str(combination(length-math.ceil(points), 6-math.ceil(points))))
 		for i in range(int((points-0.5)*2), 5, -1):
+			if 6-math.ceil(i/2) > length-math.ceil(points):
+				break
 			if((i/2)%1==0):
-				print(str(i/2)+" prize: "+str(combination(math.floor(points), i/2)*combination(length-math.ceil(points), 6-i/2)))
+				# print(str(math.floor(points)) +" C "+str(math.ceil(i/2))+" * "+str(length-math.ceil(points))+" C "+ str(6-math.ceil(i/2)))
+				print(str(13-i)+" prize: "+str(combination(math.floor(points), i/2)*combination(length-math.ceil(points), 6-i/2)))
 			else:
-				print(str(i/2)+" prize: "+str((combination(math.ceil(points), math.ceil(i/2))*combination(length-math.ceil(points), 6-math.ceil(i/2)))-(combination(math.floor(points), math.ceil(i/2))*combination(length-math.ceil(points), 6-math.ceil(i/2)))))
+				# print(str(math.ceil(points)) +" C "+str(math.ceil(i/2))+" * "+str(length-math.ceil(points))+" C "+ str(6-math.ceil(i/2)) + " - " + str(math.floor(points))+" C "+str(math.ceil(i/2))+" * "+str(length-math.ceil(points))+" C "+str(6-math.ceil(i/2)))
+				print(str(13-i)+" prize: "+str((combination(math.ceil(points), math.ceil(i/2))*combination(length-math.ceil(points), 6-math.ceil(i/2)))-(combination(math.floor(points), math.ceil(i/2))*combination(length-math.ceil(points), 6-math.ceil(i/2)))))
 
 # main start
 repeat=True
